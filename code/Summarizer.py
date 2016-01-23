@@ -19,6 +19,6 @@ class Summarizer:
         stemmer = Stemmer(self.LANG)
         summarizer = SumySummarizer(stemmer)
         summarizer.stop_words = get_stop_words(self.LANG)
-        summary = ''.join([str(sentence) for sentence in summarizer(parser.document, numSentences)])
+        summary = ' '.join([str(sentence).decode('utf-8') for sentence in summarizer(parser.document, numSentences)])
         return summary
         
