@@ -28,7 +28,7 @@ public class SMSReceiver extends BroadcastReceiver
                 if (i==0) {
                 	//---get the sender address/phone number---
                 	str += msgs[i].getOriginatingAddress();
-                	str += ": ";
+                	str += ": \n";
                 } 
                 //---get the message body---
                 str += msgs[i].getMessageBody().toString();                	
@@ -41,8 +41,8 @@ public class SMSReceiver extends BroadcastReceiver
             //---stop the SMS message from being broadcasted---
             this.abortBroadcast();
             
-            //---launch the smsactivity---
-            Intent mainActivityIntent = new Intent(context, SMSActivity.class);
+            //---launch the main_activity---
+            Intent mainActivityIntent = new Intent(context, MainActivity.class);
             mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(mainActivityIntent);
 

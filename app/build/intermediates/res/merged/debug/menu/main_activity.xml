@@ -14,20 +14,12 @@
   limitations under the License.
   -->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/howto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Dummy content. -->
-    <TextView style="?android:textAppearanceMedium"
-        android:lineSpacingMultiplier="1.2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/how_to_text"
-        android:textIsSelectable="true"
-        android:padding="16dp"
-        android:textColor="@color/black"/>
+    <!-- Toggles between a content view and a loading indicator view. Real-world
+         applications should automatically toggle when content becomes available. -->
+    <item android:id="@+id/action_toggle"
+        android:title="@string/action_toggle"
+        android:showAsAction="ifRoom|withText" />
 
-</ScrollView>
+</menu>
