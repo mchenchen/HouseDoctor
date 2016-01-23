@@ -2,9 +2,7 @@
 <resources>
     <string name="app_name">House Doctor</string>
     <string name="action_toggle">Query Page</string>
-     <string name="how_to_text"> House Doctor is the amazing android app that allows you to query medical information using texts.\n\nTo get started:\n
-         1. Go to the Query Page by clicking on the menu item "Query Page"\n
-         2. Enter your query in the form of a question about your medical condition\n
-         3. Receive rapid results about treatment
+     <string name="how_to_text">
+         House Doctor is the amazing android app that allows you to query medical information using texts.\n\nTo get started:\n1. Press \"Query Page\" to access search tool\n2. Enter your query in the form of a question about your medical condition\n3. Receive rapid results about treatment
      </string>
 </resources>

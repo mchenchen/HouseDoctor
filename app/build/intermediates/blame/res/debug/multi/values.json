@@ -223,9 +223,9 @@
                     "startLine": 20,
                     "startColumn": 4,
                     "startOffset": 796,
-                    "endLine": 24,
+                    "endLine": 22,
                     "endColumn": 14,
-                    "endOffset": 1170
+                    "endOffset": 1129
                 },
                 "from": {
                     "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml",
@@ -233,9 +233,9 @@
                         "startLine": 4,
                         "startColumn": 5,
                         "startOffset": 163,
-                        "endLine": 8,
+                        "endLine": 6,
                         "endColumn": 14,
-                        "endOffset": 541
+                        "endOffset": 498
                     }
                 }
             }

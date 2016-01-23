@@ -14,6 +14,7 @@ import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,16 +50,16 @@ public class MainActivity extends Activity {
 	 */
 	Menu menu;
 	// string containing raw text message string which will be manipulated
-	String textMessage;
+	String receivedMessage;
+	private EditText editText;
 
-    
-    private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
+	private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             //�-display the SMS received in the TextView�-
             TextView SMSes = (TextView) findViewById(R.id.results);
-			textMessage = intent.getExtras().getString("sms");
-            SMSes.setText(textMessage.substring(62));
+			receivedMessage = intent.getExtras().getString("sms");
+            SMSes.setText(receivedMessage.substring(62));
         }
     };
 
@@ -86,6 +87,7 @@ public class MainActivity extends Activity {
 
 		// Retrieve and cache the system's default "short" animation time.
 		mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
+		editText = (EditText)findViewById(R.id.queryEdit);
 	}
 
 	@Override
@@ -228,7 +230,8 @@ public class MainActivity extends Activity {
 				});
 	}
 	public void onClick(View v) {
-		sendSMS("6475034157", "Hello my friends!");
+		String string = editText.getText().toString();
+		sendSMS("6475034157", string);
 	}
 
 	//�-sends an SMS message to another device�-
