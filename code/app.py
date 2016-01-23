@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect
 import twilio.twiml
+import os
  
 app = Flask(__name__)
  
@@ -12,4 +13,6 @@ def hello_monkey():
     return str(resp)
  
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+    port = int(os.environ.get('PORT', 33507))
+    print("Binding to port: " + str(port))
+    app.run(host='0.0.0.0', port=port, debug=True)
