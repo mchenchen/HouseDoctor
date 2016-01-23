@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\build\\intermediates\\res\\merged\\debug\\layout\\howto.xml",
+        "source": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\layout\\howto.xml"
+    },
+    {
         "merged": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
         "source": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\layout\\main.xml"
     }

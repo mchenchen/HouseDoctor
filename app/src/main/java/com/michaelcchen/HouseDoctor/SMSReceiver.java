@@ -16,7 +16,7 @@ public class SMSReceiver extends BroadcastReceiver
     {
         //---get the SMS message passed in---
         Bundle bundle = intent.getExtras();
-        SmsMessage[] msgs = null;
+        SmsMessage[] msgs;
         String str = "SMS from ";
         if (bundle != null)
         {
@@ -41,7 +41,7 @@ public class SMSReceiver extends BroadcastReceiver
             //---stop the SMS message from being broadcasted---
             this.abortBroadcast();
             
-            //---launch the SMSActivity---
+            //---launch the smsactivity---
             Intent mainActivityIntent = new Intent(context, SMSActivity.class);
             mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(mainActivityIntent);

@@ -1,5 +1,7 @@
 package com.michaelcchen.HouseDoctor;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -9,6 +11,9 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import android.telephony.SmsManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +24,35 @@ public class SMSActivity extends Activity {
 	PendingIntent sentPI, deliveredPI;
 	BroadcastReceiver smsSentReceiver, smsDeliveredReceiver;
     IntentFilter intentFilter;
+
+	//cross fade animation
+	/**
+	 * The flag indicating whether content is loaded (text is shown) or not (loading spinner is
+	 * shown).
+	 */
+	private boolean mContentLoaded;
+
+	/**
+	 * The view (or view group) containing the content. This is one of two overlapping views.
+	 */
+	private View mHowToView;
+
+	/**
+	 * The view containing the loading indicator. This is the other of two overlapping views.
+	 */
+	private View mMessengerView;
+
+	/**
+	 * The system "short" animation time duration, in milliseconds. This duration is ideal for
+	 * subtle animations or animations that occur very frequently.
+	 */
+	private int mShortAnimationDuration;
     
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //—-display the SMS received in the TextView—-
-            TextView SMSes = (TextView) findViewById(R.id.textView1);
+            //ï¿½-display the SMS received in the TextViewï¿½-
+            TextView SMSes = (TextView) findViewById(R.id.results);
             SMSes.setText(intent.getExtras().getString("sms"));
         }
     };
@@ -41,12 +69,19 @@ public class SMSActivity extends Activity {
 		deliveredPI = PendingIntent.getBroadcast(this, 0,
 				new Intent(DELIVERED), 0);
 		
-        //—-intent to filter for SMS messages received—-
+        //ï¿½-intent to filter for SMS messages receivedï¿½-
         intentFilter = new IntentFilter();
         intentFilter.addAction("SMS_RECEIVED_ACTION");
         
         //---register the receiver---
         registerReceiver(intentReceiver, intentFilter);
+
+		//cross fade declarations
+		mHowToView = findViewById(R.id.howto);
+		mMessengerView = findViewById(R.id.messenger);
+
+		// Retrieve and cache the system's default "short" animation time.
+		mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
 	}
 
 	@Override
@@ -130,11 +165,65 @@ public class SMSActivity extends Activity {
         unregisterReceiver(intentReceiver);        
     }
 
+	//menus to crossfade
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.smsactivity, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+			case R.id.action_toggle:
+				// Toggle whether content is loaded.
+				mContentLoaded = !mContentLoaded;
+				showContentOrLoadingIndicator(mContentLoaded);
+				return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void showContentOrLoadingIndicator(boolean contentLoaded) {
+		// Decide which view to hide and which to show.
+		final View showView = contentLoaded ? mHowToView : mMessengerView;
+		final View hideView = contentLoaded ? mMessengerView : mHowToView;
+
+		// Set the "show" view to 0% opacity but visible, so that it is visible
+		// (but fully transparent) during the animation.
+		showView.setAlpha(0f);
+		showView.setVisibility(View.VISIBLE);
+
+		// Animate the "show" view to 100% opacity, and clear any animation listener set on
+		// the view. Remember that listeners are not limited to the specific animation
+		// describes in the chained method calls. Listeners are set on the
+		// ViewPropertyAnimator object for the view, which persists across several
+		// animations.
+		showView.animate()
+				.alpha(1f)
+				.setDuration(mShortAnimationDuration)
+				.setListener(null);
+
+		// Animate the "hide" view to 0% opacity. After the animation ends, set its visibility
+		// to GONE as an optimization step (it won't participate in layout passes, etc.)
+		hideView.animate()
+				.alpha(0f)
+				.setDuration(mShortAnimationDuration)
+				.setListener(new AnimatorListenerAdapter() {
+					@Override
+					public void onAnimationEnd(Animator animation) {
+						hideView.setVisibility(View.GONE);
+					}
+				});
+	}
 	public void onClick(View v) {
 		sendSMS("6475034157", "Hello my friends!");
 	}
 
-	//—-sends an SMS message to another device—-
+	//ï¿½-sends an SMS message to another deviceï¿½-
 	private void sendSMS(String phoneNumber, String message)
 	{
 		SmsManager sms = SmsManager.getDefault();
