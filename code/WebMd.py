@@ -1,5 +1,6 @@
 from py_bing_search import PyBingSearch
 from Summarizer import Summarizer
+import requests
 
 class WebMd:
     
@@ -13,6 +14,13 @@ class WebMd:
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
         self.summarizer = Summarizer()
+           
+    def summarize(self, url):
+        """Attempts to summarize webpage contents (assuming webmd url) 
+        """
+        response = requests.get(url).json()
+        return response
+        
         
     def search(self, s, limit=1):
         """Returns top limit number of html summarized page results from searching s using bing

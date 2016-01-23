@@ -6,6 +6,7 @@ class TopicExtractor():
         self.apikey = open('bluemixapikey.txt').read()
         #self.endpoint = "http://gateway-a.watsonplatform.net/calls/text/TextGetRankedKeywords"
         self.endpoint = "http://access.alchemyapi.com/calls/text/TextGetRelations"
+    
     def extract(self, text):
         """Extract keywords using IBM bluemix
         """
