@@ -13,7 +13,7 @@ topic_extractor = TopicExtractor()
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
-    incoming_message = request.form.get('Body', '')
+    incoming_message = request.args.get('Body')
     resp = twilio.twiml.Response()
     resp.message(webmd.search(topic_extractor.extract(incoming_message)))
     return str(resp)
