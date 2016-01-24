@@ -22,9 +22,17 @@ def hello_monkey():
         'formatted_response':[],
         'response':''
     }
+    count = 10 # avoid infinite while-loop
     if status == 1:
-        json_response['formatted_response'] = response
+        while(count>0):
+            json_response['formatted_response'] = response
+            if(len(str(json_response))<1600):
+                break
+            response = response[0:len(response)-1]
+            count = count - 1
     else:
+        if len(response) > 1500:
+            response = response[0:1500]
         json_response['response'] = response
     resp.message(json.dumps(json_response))    
     return str(resp)
