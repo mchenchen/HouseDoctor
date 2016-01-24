@@ -39,8 +39,7 @@ def extract_instructions(info):
         body = '\n'.join(body_elems)    # create body string
 
         # create response object
-        current_step = {"heading": headers[i], "body": body}
-        current_instruction = (current_step,)
+        current_instruction = {"heading": headers[i], "body": body}
         instructions.append(current_instruction)
         
     return instructions
