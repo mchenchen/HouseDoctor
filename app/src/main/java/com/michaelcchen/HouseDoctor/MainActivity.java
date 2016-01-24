@@ -65,20 +65,23 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
             }
             try {
-                if(jsonObject.getInt("formatted") == 1) {
-                    JSONArray jsons = jsonObject.getJSONArray("formatted_response");
-                    for(int i = 0; i < jsons.length(); ++i) {
-                        SMSes.append(Html.fromHtml("<b>" + jsons.getJSONObject(i).getString("heading") + "</b>\n" + "\n"));
-                        SMSes.append(jsons.getJSONObject(i).getString("body") + "\n");
+                if(jsonObject != null) {
+                    if (jsonObject.getInt("formatted") == 1) {
+                        JSONArray jsons = jsonObject.getJSONArray("formatted_response");
+                        for (int i = 0; i < jsons.length(); ++i) {
+                            SMSes.append(Html.fromHtml("<b>" + jsons.getJSONObject(i).getString("heading") + "</b>\n" + "\n"));
+                            SMSes.append(jsons.getJSONObject(i).getString("body") + "\n");
+                        }
+                    } else {
+                        SMSes.setText(jsonObject.getString("response"));
                     }
                 }
                 else {
-                    SMSes.setText(jsonObject.getString("response"));
+                    SMSes.setText(receivedMessage.substring(62));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            //SMSes.setText(receivedMessage.substring(62));
         }
     };
 
@@ -206,7 +209,7 @@ public class MainActivity extends Activity {
                 spinner.setVisibility(View.VISIBLE);
                 mMessengerView.setVisibility(View.GONE);
                 Log.d("debug", "should be visible");
-                sendSMS("6475034157", string);
+                sendSMS("6475034751", string);
             }
         } else if (v == instructButton) {
             startActivity(new Intent(this, Instructions.class));
