@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/icon"
-            android:paddingTop="50dip"
-            android:paddingBottom="50dp"
+            android:paddingTop="10dip"
+            android:paddingBottom="20dp"
             android:layout_gravity="center_vertical"/>
         <Button
             android:id="@+id/instructButton"
@@ -49,7 +48,15 @@
                 android:text="@string/search_button"
                 android:onClick="onClick" />
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:textColor="@color/black"
+            android:layout_margin="50dp"
+            android:textSize="18sp"
+            android:text="An accessible medical database at your fingertips"/>
 
     </LinearLayout>
     <ProgressBar
@@ -59,25 +66,25 @@
         android:id="@+id/progressBar"
         android:progressDrawable="@drawable/circular_progress_bar"
         android:gravity="center"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:fillViewport="true"
-        android:padding="10dip">
+        android:padding="10dip"
+        android:layout_weight="1">
         <TextView
             android:id="@+id/results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
     </ScrollView>
+
     <Button
         android:id="@+id/searchAgainButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_again_button"
-        android:onClick="onClick"
-        android:paddingTop="100dp"/>
+        android:onClick="onClick"/>
 
 </LinearLayout>

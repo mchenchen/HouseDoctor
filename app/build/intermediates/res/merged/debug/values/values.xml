@@ -18,10 +18,12 @@
     <color name="yellow">#FFFF00</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <string name="app_instructions">App Instructions</string>
+    <string name="app_instructions">Instructions</string>
     <string name="app_name">House Doctor</string>
     <string name="how_to_text">
-         House Doctor is the amazing android app that allows you to query medical information using texts.\n\nTo get started:\n1. Press \"Query Page\" to access search tool\n2. Enter your query in the form of a question about your medical condition\n3. Receive rapid results about treatment
+         House Doctor is the amazing android app that allows you to query medical information using texts.\n\nTo get started:\n1. Enter keywords or phrases related to your current medical condition
+         \n2. Press \"search\"\n3. Receive rapid results about treatment
+         \n\nWarning: this app makes use of your phone\'s sms services. Additional charges may be incurred depending on the terms of agreement with your carrier.
      </string>
     <string name="search_again_button">Search Again</string>
     <string name="search_button">Search</string>
