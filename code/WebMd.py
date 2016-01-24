@@ -94,6 +94,9 @@ class WebMd:
         return response
 
     def isFirstAidPage(self, url):
+        
+        #########
+        
         return False
         
         
@@ -103,12 +106,15 @@ class WebMd:
         """
         result_list, next_uri = self.bing.search(s + " treatment webmd", limit=limit, format='json')
         
-        ########### Shiuyan's processing ##########
+        ########### Xiuyan's processing. First Aid type instruction format ##########
         for result in result_list:
             print(result.url)
             if self.isFirstAidPage(result.url):
+                
                 print("First Aid WebMd Page")
-                return ""
+                
+                page = requests.get(result.url)
+                return extract_instructions(page)
                 
         ########## Rahman's processing. Returns structured data representing all of first link #############
         try:
