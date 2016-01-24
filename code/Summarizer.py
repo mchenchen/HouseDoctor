@@ -14,6 +14,8 @@ class Summarizer:
         pass
     
     def summarizeText(self, body, numSentences = 10):
+        """Summarizes body of text to numSentences
+        """
         #parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))
         parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))        
         stemmer = Stemmer(self.LANG)
@@ -24,6 +26,8 @@ class Summarizer:
             
 
     def summarizeUrl(self, url, numSentences = 10):
+        """Summarizes text at a given url to numSentences
+        """
         #parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))
         parser = HtmlParser.from_url(url, Tokenizer(self.LANG))        
         stemmer = Stemmer(self.LANG)

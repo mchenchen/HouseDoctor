@@ -3,6 +3,7 @@ from Summarizer import Summarizer
 import requests
 import urllib2
 from bs4 import BeautifulSoup
+from firstaid import extract_instructions 
 
 class WebMd:
     
@@ -16,13 +17,53 @@ class WebMd:
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
         self.summarizer = Summarizer()
-        
-    def extractUrlText(self, url):
+
+    def extractUrlStructuredText(self, url):
+        """Extracts data from webmd url and provides a list of objects containing the heading and body
+        """
         html = self.getUrl(url)    
         Soup = BeautifulSoup(html)
-        soup = Soup.find('div', {'class':'hwDefinition_fmt'})
+        soup = Soup.find('div', {'class':'hwDefinition_fmt'}) # better condition but doesn't always exist
         if soup == None:
-            soup = Soup.find('div', {'id':'textArea'})
+            soup = Soup.find('div', {'id':'textArea'}) # generally always exists
+        body = ""
+        blocks = [] # list of objects containing heading and body
+        heading = ""
+        body = ""
+        startNew = False
+        skip = False
+        for child in soup.recursiveChildGenerator():
+            name = getattr(child, "name", None)
+            if skip:
+                skip = False
+                continue
+            if startNew:
+                heading = child
+                body = ""
+                startNew = False
+                continue
+            if name in ['script', 'style']:
+                skip = True
+                continue
+            if name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'b']:
+                blocks.append({'heading':heading, 'body':body})
+                startNew = True
+            if name is not None:
+                pass
+            elif not child.isspace(): # leaf node, don't print spaces
+                body = body + " " + child
+        if len(blocks)>1:
+            return blocks[1::]
+        return []
+        
+    def extractUrlText(self, url):
+        """Extracts content text from webmd url
+        """
+        html = self.getUrl(url)    
+        Soup = BeautifulSoup(html)
+        soup = Soup.find('div', {'class':'hwDefinition_fmt'}) # better condition but doesn't always exist
+        if soup == None:
+            soup = Soup.find('div', {'id':'textArea'}) # generally always exists
         skipNext = False
         body = ""
         for child in soup.recursiveChildGenerator():
@@ -54,22 +95,37 @@ class WebMd:
         return response
 
     def isFirstAidPage(self, url):
-        return False
-        
+        if url.find('/first-aid/') == -1:
+            return False
+        else:
+            return True
         
     def search(self, s, limit=3):
-        """Returns top limit number of html summarized page results from searching s using bing
+        """Searches top limit number of bing searches.
+           Returns the summarized/unsummarized data and the format code (0=no format, 1=formatted)
         """
         result_list, next_uri = self.bing.search(s + " treatment webmd", limit=limit, format='json')
         
-        ########### Shiuyan's processing ##########
+        ########### Xiuyan's processing. First Aid type instruction format ##########
         for result in result_list:
             print(result.url)
             if self.isFirstAidPage(result.url):
-                print("First Aid WebMd Page")
-                return ""
+                
+                try:
+                    page = requests.get(result.url)
+                    print("piece of shit")
+                    return (extract_instructions(page), 1)
+                except:
+                    print("entered Xiuyan's except")
+                
+        ########## Rahman's processing. Returns structured data representing all of first link #############
+        try:
+            blocks = self.extractUrlStructuredText(result_list[0].url)
+            return (blocks, 1)
+        except:
+            print("Able to structure into headers and body")
 
-        ########### Rahman's processing for 'other' pages ###########  
+        ########### Rahman's processing for 'other' pages. Attempts to summarize all first three links ###########  
         content = ""      
         for result in result_list:
             try:
@@ -79,9 +135,9 @@ class WebMd:
                 pass
         if content == "":
             print("Other WebMd Page")
-            return self.summarizer.summarizeText(content)
+            return (self.summarizer.summarizeText(content), 0)
         
         ########### Worst case: summarize first url ################
         print("Summarizing first")
-        return self.summarizer.summarizeUrl(result_list[0].url)
+        return (self.summarizer.summarizeUrl(result_list[0].url), 0)
         
