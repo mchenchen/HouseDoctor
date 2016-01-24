@@ -3,6 +3,7 @@ from Summarizer import Summarizer
 import requests
 import urllib2
 from bs4 import BeautifulSoup
+from firstaid import extract_instructions 
 
 class WebMd:
     
