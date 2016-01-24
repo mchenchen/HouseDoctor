@@ -199,20 +199,51 @@
                     "startLine": 18,
                     "startColumn": 4,
                     "startOffset": 693,
-                    "endColumn": 52,
-                    "endOffset": 741
+                    "endColumn": 57,
+                    "endOffset": 746
                 },
                 "from": {
-                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\dimens.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 746,
+                    "startOffset": 751,
+                    "endColumn": 55,
+                    "endOffset": 802
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 807,
+                    "endColumn": 57,
+                    "endOffset": 860
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 108,
+                        "endColumn": 57,
+                        "endOffset": 161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 865,
                     "endColumn": 49,
-                    "endOffset": 791
+                    "endOffset": 910
                 },
                 "from": {
                     "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
@@ -220,23 +251,181 @@
             },
             {
                 "to": {
-                    "startLine": 20,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 796,
-                    "endLine": 22,
+                    "startOffset": 915,
+                    "endLine": 26,
                     "endColumn": 14,
-                    "endOffset": 1129
+                    "endOffset": 1390
                 },
                 "from": {
-                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 5,
-                        "startOffset": 163,
-                        "endLine": 6,
-                        "endColumn": 14,
-                        "endOffset": 498
-                    }
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1395,
+                    "endColumn": 60,
+                    "endOffset": 1451
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1456,
+                    "endColumn": 48,
+                    "endOffset": 1500
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1505,
+                    "endColumn": 74,
+                    "endOffset": 1575
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1580,
+                    "endLine": 35,
+                    "endColumn": 12,
+                    "endOffset": 2018
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2023,
+                    "endLine": 39,
+                    "endColumn": 12,
+                    "endOffset": 2292
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2297,
+                    "endLine": 42,
+                    "endColumn": 12,
+                    "endOffset": 2492
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2497,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 2698
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2703,
+                    "endLine": 48,
+                    "endColumn": 12,
+                    "endOffset": 2904
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 2909,
+                    "endLine": 53,
+                    "endColumn": 12,
+                    "endOffset": 3276
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3281,
+                    "endLine": 56,
+                    "endColumn": 12,
+                    "endOffset": 3475
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3480,
+                    "endLine": 59,
+                    "endColumn": 12,
+                    "endOffset": 3683
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 3688,
+                    "endLine": 72,
+                    "endColumn": 12,
+                    "endOffset": 4603
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 4608,
+                    "endLine": 76,
+                    "endColumn": 12,
+                    "endOffset": 4857
+                },
+                "from": {
+                    "file": "C:\\Android\\AndroidStudioProjects\\HouseCall\\app\\src\\main\\res\\values\\styles_example.xml"
                 }
             }
         ]
