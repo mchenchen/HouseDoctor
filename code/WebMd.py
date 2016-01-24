@@ -3,6 +3,7 @@ from Summarizer import Summarizer
 import requests
 import urllib2
 from bs4 import BeautifulSoup
+from firstaid import extract_instructions 
 
 class WebMd:
     
@@ -94,8 +95,10 @@ class WebMd:
         return response
 
     def isFirstAidPage(self, url):
-        return False
-        
+        if url.find('/first-aid/') == -1:
+            return False
+        else:
+            return True
         
     def search(self, s, limit=3):
         """Searches top limit number of bing searches.
@@ -103,12 +106,17 @@ class WebMd:
         """
         result_list, next_uri = self.bing.search(s + " treatment webmd", limit=limit, format='json')
         
-        ########### Shiuyan's processing ##########
+        ########### Xiuyan's processing. First Aid type instruction format ##########
         for result in result_list:
             print(result.url)
             if self.isFirstAidPage(result.url):
-                print("First Aid WebMd Page")
-                return ""
+                
+                try:
+                    page = requests.get(result.url)
+                    print("piece of shit")
+                    return (extract_instructions(page), 1)
+                except:
+                    print("entered Xiuyan's except")
                 
         ########## Rahman's processing. Returns structured data representing all of first link #############
         try:
