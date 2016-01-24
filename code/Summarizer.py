@@ -12,6 +12,16 @@ class Summarizer:
     def __init__(self):
         self.LANG = "english"
         pass
+    
+    def summarizeText(self, body, numSentences = 10):
+        #parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))
+        parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))        
+        stemmer = Stemmer(self.LANG)
+        summarizer = SumySummarizer(stemmer)
+        summarizer.stop_words = get_stop_words(self.LANG)
+        summary = ' '.join([str(sentence).decode('utf-8') for sentence in summarizer(parser.document, numSentences)])
+        return summary
+            
 
     def summarizeUrl(self, url, numSentences = 10):
         #parser = PlaintextParser.from_string(body, Tokenizer(self.LANG))
@@ -19,6 +29,6 @@ class Summarizer:
         stemmer = Stemmer(self.LANG)
         summarizer = SumySummarizer(stemmer)
         summarizer.stop_words = get_stop_words(self.LANG)
-        summary = ''.join([str(sentence) for sentence in summarizer(parser.document, numSentences)])
+        summary = ' '.join([str(sentence).decode('utf-8') for sentence in summarizer(parser.document, numSentences)])
         return summary
         
