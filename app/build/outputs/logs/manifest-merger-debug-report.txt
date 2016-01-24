@@ -32,18 +32,18 @@ uses-permission#android.permission.RECEIVE_SMS
 ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:10:5-70
 	android:name
 		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:10:22-67
-android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:12:5-89
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:12:5-81
 	android:name
-		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:12:30-86
-android:uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:13:5-83
+		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:12:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:13:5-75
 	android:name
-		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:13:30-80
-android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:14:5-88
+		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:13:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:14:5-80
 	android:name
-		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:14:30-85
+		ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:14:22-77
 application
 ADDED from C:\Android\AndroidStudioProjects\HouseCall\app\src\main\AndroidManifest.xml:16:5-40:19
 	android:label

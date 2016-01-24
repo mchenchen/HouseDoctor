@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import android.telephony.SmsManager;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +23,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.List;
 
 public class MainActivity extends Activity {
     String SENT = "SMS_SENT";
@@ -37,6 +42,7 @@ public class MainActivity extends Activity {
     TextView SMSes;
     //formatted text
     JSONObject jsonObject;
+    String formattedText;
     // misc view elements
     private EditText editText;
     private ProgressBar spinner;
@@ -49,6 +55,7 @@ public class MainActivity extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             //�-display the SMS received in the TextView�-
+            SMSes.setText("");
             spinner.setVisibility(View.GONE);
             mMessengerView.setVisibility(View.GONE);
             receivedMessage = intent.getExtras().getString("sms");
@@ -57,8 +64,21 @@ public class MainActivity extends Activity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            SMSes.setText(receivedMessage.substring(62));
+            try {
+                if(jsonObject.getInt("formatted") == 1) {
+                    JSONArray jsons = jsonObject.getJSONArray("formatted_response");
+                    for(int i = 0; i < jsons.length(); ++i) {
+                        SMSes.append(Html.fromHtml("<b>" + jsons.getJSONObject(i).getString("heading") + "</b>\n" + "\n"));
+                        SMSes.append(jsons.getJSONObject(i).getString("body") + "\n");
+                    }
+                }
+                else {
+                    SMSes.setText(jsonObject.getString("response"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //SMSes.setText(receivedMessage.substring(62));
         }
     };
 
