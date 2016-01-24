@@ -113,6 +113,7 @@ class WebMd:
                 
                 try:
                     page = requests.get(result.url)
+                    print("piece of shit")
                     return (extract_instructions(page), 1)
                 except:
                     print("entered Xiuyan's except")
