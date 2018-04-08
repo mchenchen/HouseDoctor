@@ -1,9 +1,17 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 14
-    buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "net.learn2develop.SMS"
         minSdkVersion 14
@@ -16,4 +24,5 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    buildToolsVersion '27.0.3'
 }
